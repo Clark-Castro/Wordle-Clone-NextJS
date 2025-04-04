@@ -1,17 +1,31 @@
 import Block from "./Block";
-import { RowData } from "@/types";
 
-export default function Row({ data }: { data: RowData }) {
+type RowProps = {
+  guess: string;
+  targetWord: string;
+  isSubmitted: boolean;
+};
+
+export default function Row({ guess, targetWord, isSubmitted }: RowProps) {
+  const getStatus = (index: number) => {
+    if (!isSubmitted) return "gray";
+    const letter = guess[index];
+    if (letter === targetWord[index]) return "correct";
+    return targetWord.includes(letter) ? "present" : "absent";
+  };
+
   return (
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}>
-      {Object.entries(data).map(([key, block]) => (
-        <Block key={key} color={block.color} letter={block.letter} />
-      ))}
+    <div className="row">
+      {Array(5)
+        .fill(0)
+        .map((_, index) => (
+          <Block
+            key={index}
+            char={guess[index] || ""}
+            status={isSubmitted ? getStatus(index) : undefined}
+            delay={index}
+          />
+        ))}
     </div>
   );
 }

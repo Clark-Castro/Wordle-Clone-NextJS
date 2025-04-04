@@ -1,40 +1,23 @@
 "use client";
-import { useEffect, useState } from "react";
-import { BlockData } from "@/types";
+import { motion } from "framer-motion";
 
-export default function Block({ color, letter }: BlockData) {
-  const [bgColor, setBgColor] = useState("var(--gray-col)");
-  const [borderColor, setBorderColor] = useState("var(--gray-col)");
+type BlockProps = {
+  char: string;
+  status?: "correct" | "present" | "absent";
+  delay?: number;
+};
 
-  useEffect(() => {
-    const colorMap: Record<string, string> = {
-      correct: "var(--green-col)",
-      present: "var(--yellow-col)",
-      absent: "#3a3a3c",
-      gray: "#121213",
-    };
-    setBgColor(colorMap[color] || "#121213");
-    setBorderColor(color !== "gray" ? "transparent" : "#3a3a3c");
-  }, [color]);
-
+export default function Block({ char, status, delay = 0 }: BlockProps) {
   return (
-    <div
-      style={{
-        width: "64px",
-        height: "64px",
-        margin: "4px",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: bgColor,
-        border: `2px solid ${borderColor}`,
-        fontSize: "2rem",
-        fontWeight: "bold",
-        textTransform: "uppercase",
-        color: "white",
-        transition: "background-color 0.3s ease, border 0.3s ease",
-      }}>
-      {letter}
-    </div>
+    <motion.div
+      className={`block ${status || ""}`}
+      initial={{ scale: 1, rotateX: 0 }}
+      animate={{
+        rotateX: char ? [0, 90, 0] : 0,
+        scale: char ? [1, 1.1, 1] : 1,
+      }}
+      transition={{ duration: 0.6, delay: delay * 0.1 }}>
+      <span className="block-letter">{char}</span>
+    </motion.div>
   );
 }
