@@ -4,31 +4,35 @@ import { BlockData } from "@/types";
 
 export default function Block({ color, letter }: BlockData) {
   const [bgColor, setBgColor] = useState("var(--gray-col)");
+  const [borderColor, setBorderColor] = useState("var(--gray-col)");
 
   useEffect(() => {
-    setBgColor(
-      color === "correct"
-        ? "var(--green-col)"
-        : color === "present"
-        ? "var(--yellow-col)"
-        : "var(--gray-col)"
-    );
+    const colorMap: Record<string, string> = {
+      correct: "var(--green-col)",
+      present: "var(--yellow-col)",
+      absent: "#3a3a3c",
+      gray: "#121213",
+    };
+    setBgColor(colorMap[color] || "#121213");
+    setBorderColor(color !== "gray" ? "transparent" : "#3a3a3c");
   }, [color]);
 
   return (
     <div
       style={{
+        width: "64px",
+        height: "64px",
+        margin: "4px",
         display: "flex",
-        alignItems: "center",
         justifyContent: "center",
-        width: "80px",
-        height: "100px",
+        alignItems: "center",
         backgroundColor: bgColor,
-        margin: "0.5rem",
-        fontSize: "5rem",
-        fontWeight: "900",
+        border: `2px solid ${borderColor}`,
+        fontSize: "2rem",
+        fontWeight: "bold",
+        textTransform: "uppercase",
         color: "white",
-        userSelect: "none",
+        transition: "background-color 0.3s ease, border 0.3s ease",
       }}>
       {letter}
     </div>
