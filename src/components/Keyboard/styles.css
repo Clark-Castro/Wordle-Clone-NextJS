@@ -10,3 +10,21 @@
 .keyboard-key:active {
   scale: 0.9;
 }
+
+.correct {
+  background-color: var(--correct);
+  border-color: var(--correct);
+  color: white;
+}
+
+.present {
+  background-color: var(--present);
+  border-color: var(--present);
+  color: white;
+}
+
+.absent {
+  background-color: var(--absent);
+  border-color: var(--absent);
+  color: white;
+}
