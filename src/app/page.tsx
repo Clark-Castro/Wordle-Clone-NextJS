@@ -5,7 +5,6 @@ import dynamic from "next/dynamic";
 import useGameStore from "@/store/game";
 import Row from "@/components/Row";
 import StatsModal from "@/components/StatsModal";
-import Confetti from "@/components/Confetti";
 import ThemeToggle from "@/components/ThemeToggle";
 
 const Keyboard = dynamic(() => import("@/components/Keyboard"), { ssr: false });
@@ -17,7 +16,6 @@ export default function Home() {
     guesses,
     currentGuess,
     gameStatus,
-    stats,
     addLetter,
     removeLetter,
     submitGuess,
@@ -71,11 +69,10 @@ export default function Home() {
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           className="game-over-modal">
-          {gameStatus === "won" && <Confetti active={true} />}
           <button onClick={newGame} className="new-game-button">
             New Game
           </button>
-          <StatsModal stats={stats} />
+          <StatsModal />
         </motion.div>
       )}
     </motion.main>

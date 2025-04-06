@@ -14,23 +14,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              try {
-                var theme = localStorage.getItem('theme') || 'system';
-                var root = document.documentElement;
-                if (theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                  root.setAttribute('data-theme', 'dark');
-                } else {
-                  root.setAttribute('data-theme', 'light');
-                }
-              } catch (_) {}
-            `,
-          }}
-        />
-      </head>
       <body>
         <ThemeProvider attribute="data-theme" defaultTheme="system">
           {children}

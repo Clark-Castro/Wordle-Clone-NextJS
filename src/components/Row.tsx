@@ -8,7 +8,6 @@ type RowProps = {
 
 export default function Row({ guess, targetWord, isSubmitted }: RowProps) {
   const getStatus = (index: number) => {
-    if (!isSubmitted) return "gray";
     const letter = guess[index];
     if (letter === targetWord[index]) return "correct";
     return targetWord.includes(letter) ? "present" : "absent";

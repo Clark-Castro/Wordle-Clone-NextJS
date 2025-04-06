@@ -4,7 +4,6 @@ export const WORDS = [
   "STATE",
   "HOOKS",
   "STORE",
-  "NEXTJS",
   "BUILD",
   "ROUTE",
   "QUERY",
@@ -12,8 +11,6 @@ export const WORDS = [
   "PROPS",
   "ERROR",
   "FETCH",
-  "CLIENT",
-  "SERVER",
 ];
 
 export const generateWord = () =>
