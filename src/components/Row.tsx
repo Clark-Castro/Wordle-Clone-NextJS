@@ -1,4 +1,5 @@
-import Block from "./Block";
+"use client";
+import Block from "@/components/Block";
 
 type RowProps = {
   guess: string;

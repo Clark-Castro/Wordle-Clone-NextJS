@@ -1,11 +1,11 @@
 "use client";
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
+import { motion } from "framer-motion";
 import useGameStore from "@/store/game";
+import ThemeToggle from "@/components/ThemeToggle";
 import Row from "@/components/Row";
 import StatsModal from "@/components/StatsModal";
-import ThemeToggle from "@/components/ThemeToggle";
 
 const Keyboard = dynamic(() => import("@/components/Keyboard"), { ssr: false });
 

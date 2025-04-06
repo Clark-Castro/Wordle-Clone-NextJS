@@ -1,3 +1,5 @@
+"use client";
+
 type StatBoxProps = {
   title: string;
   value: number;

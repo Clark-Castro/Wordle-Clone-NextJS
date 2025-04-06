@@ -1,7 +1,7 @@
 "use client";
+import { motion } from "framer-motion";
 import useGameStore from "@/store/game";
 import StatBox from "@/components/StatBox";
-import { motion } from "framer-motion";
 
 export default function StatsModal() {
   const { stats, targetWord, newGame } = useGameStore();

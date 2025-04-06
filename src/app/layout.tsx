@@ -1,6 +1,6 @@
+import "@/styles/globals.css";
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
-import "@/styles/globals.css";
 
 export const metadata: Metadata = {
   title: "Wordle Clone",
