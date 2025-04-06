@@ -1,0 +1,6 @@
+.block {
+  width: 64px;
+  height: 64px;
+  border: 2px solid var(--absent);
+  color: var(--foreground);
+}

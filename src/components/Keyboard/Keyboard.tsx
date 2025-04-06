@@ -1,4 +1,5 @@
 "use client";
+import "./styles.css";
 import useGameStore from "@/store/game";
 
 const KEY_ROWS = [
@@ -22,14 +23,16 @@ export default function Keyboard() {
   };
 
   return (
-    <div className="keyboard-container">
+    <div className="flex-col-center gap-normal">
       {KEY_ROWS.map((row, rowIndex) => (
-        <div key={rowIndex} className="keyboard-row">
+        <div key={rowIndex} className="flex-center gap-normal">
           {row.map((key) => (
             <button
               key={key}
               onClick={() => handleKeyClick(key)}
-              className={`keyboard-key ${keyboardColors[key] || ""}`}>
+              className={`keyboard-key ${
+                keyboardColors[key] || ""
+              } font-small`}>
               {key === "Backspace" ? "⌫" : key}
             </button>
           ))}

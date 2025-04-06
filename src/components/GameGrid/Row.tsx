@@ -1,5 +1,5 @@
 "use client";
-import Block from "@/components/Block";
+import Block from "@/components/GameGrid/Block";
 
 type RowProps = {
   guess: string;
@@ -15,7 +15,7 @@ export default function Row({ guess, targetWord, isSubmitted }: RowProps) {
   };
 
   return (
-    <div className="row">
+    <div className="flex-center gap-normal">
       {Array(5)
         .fill(0)
         .map((_, index) => (

@@ -1,0 +1,30 @@
+.stats-modal {
+  position: fixed;
+  background-color: var(--background);
+  padding: 4rem 0;
+  box-shadow: 0 0 50px var(--foreground);
+  z-index: 10000;
+}
+
+.stat-box {
+  width: 30%;
+  padding: 1rem;
+  background-color: var(--absent);
+  color: white;
+}
+
+.stat-title {
+  opacity: 0.8;
+}
+
+.newgame-button {
+  background-color: var(--correct);
+  color: white;
+  border: none;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+}
+
+.newgame-button:hover {
+  opacity: 0.7;
+}

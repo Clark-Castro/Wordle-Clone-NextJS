@@ -3,11 +3,11 @@ import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import useGameStore from "@/store/game";
-import ThemeToggle from "@/components/ThemeToggle";
-import Row from "@/components/Row";
-import StatsModal from "@/components/StatsModal";
+import ThemeToggle from "@/components/ThemeToggle/ThemeToggle";
+import Row from "@/components/GameGrid/Row";
+import StatsModal from "@/components/StatsModal/StatsModal";
 
-const Keyboard = dynamic(() => import("@/components/Keyboard"), { ssr: false });
+const Keyboard = dynamic(() => import("@/components/Keyboard/Keyboard"), { ssr: false });
 
 export default function Home() {
   const [isMounted, setIsMounted] = useState<boolean>(false);
@@ -29,17 +29,17 @@ export default function Home() {
   }, [Game]);
 
   if (!isMounted) {
-    return <div className="loading-screen">Loading...</div>;
+    return <h1 className="height-max flex-center">Loading...</h1>;
   }
 
   return (
     <motion.main
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="game-container">
+      className="height-max flex-col-center gap-large">
       <ThemeToggle />
 
-      <div className="game-grid">
+      <div className="flex-col-center gap-normal">
         {Array.from({ length: 6 }).map((_, i) => (
           <Row
             key={i}

@@ -1,0 +1,12 @@
+.keyboard-key {
+  background-color: var(--key-bg);
+  color: white;
+  border: none;
+  padding: 12px;
+  min-width: 36px;
+  cursor: pointer;
+}
+
+.keyboard-key:active {
+  scale: 0.9;
+}

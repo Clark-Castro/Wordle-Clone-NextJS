@@ -1,0 +1,91 @@
+:root {
+  --background: #ffffff;
+  --foreground: #000000;
+  --correct: #538d4e;
+  --present: #b59f3b;
+  --absent: #3a3a3c;
+  --key-bg: #818384;
+}
+
+[data-theme="dark"] {
+  --background: #121213;
+  --foreground: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: all 0.3s;
+  border-radius: 8px;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background-color: var(--background);
+  color: var(--foreground);
+  touch-action: manipulation;
+}
+
+.height-max {
+  min-height: 100vh;
+  position: relative;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-col-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.gap-normal {
+  gap: 0.5rem;
+}
+
+.gap-large {
+  gap: 2rem;
+}
+
+.font-small {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.font-normal {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.font-large {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.correct {
+  background-color: var(--correct);
+  border-color: var(--correct);
+  color: white;
+}
+
+.present {
+  background-color: var(--present);
+  border-color: var(--present);
+  color: white;
+}
+
+.absent {
+  background-color: var(--absent);
+  border-color: var(--absent);
+  color: white;
+}

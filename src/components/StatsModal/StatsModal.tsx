@@ -1,7 +1,8 @@
 "use client";
+import "./styles.css";
 import { motion } from "framer-motion";
 import useGameStore from "@/store/game";
-import StatBox from "@/components/StatBox";
+import StatBox from "@/components/StatsModal/StatBox";
 
 export default function StatsModal() {
   const { stats, targetWord, newGame } = useGameStore();
@@ -10,9 +11,9 @@ export default function StatsModal() {
     <motion.div
       initial={{ scale: 0 }}
       animate={{ scale: 1 }}
-      className="stats-modal">
+      className="stats-modal flex-col-center gap-large">
       <h2>The Answer is : {targetWord}</h2>
-      <div className="stats-grid">
+      <div className="flex-center flex-wrap gap-large">
         <StatBox title="Played" value={stats.played} />
         <StatBox
           title="Win %"
@@ -21,7 +22,7 @@ export default function StatsModal() {
         <StatBox title="Current Streak" value={stats.streak} />
         <StatBox title="Max Streak" value={stats.maxStreak} />
       </div>
-      <button onClick={newGame} className="newgame-button">
+      <button onClick={newGame} className="newgame-button font-normal">
         New Game
       </button>
     </motion.div>
