@@ -22,7 +22,6 @@ export default function Row({ guess, targetWord, isSubmitted }: RowProps) {
             key={index}
             char={guess[index] || ""}
             status={isSubmitted ? getStatus(index) : undefined}
-            delay={index}
           />
         ))}
     </div>

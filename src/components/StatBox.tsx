@@ -1,8 +1,6 @@
-import { ReactNode } from "react";
-
 type StatBoxProps = {
   title: string;
-  value: ReactNode;
+  value: number;
 };
 
 export default function StatBox({ title, value }: StatBoxProps) {

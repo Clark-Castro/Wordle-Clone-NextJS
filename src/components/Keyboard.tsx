@@ -11,7 +11,7 @@ export default function Keyboard() {
   const { addLetter, removeLetter, submitGuess, keyboardColors } =
     useGameStore();
 
-  const handleKeyPress = (key: string) => {
+  const handleKeyClick = (key: string) => {
     if (key === "Enter") {
       submitGuess();
     } else if (key === "Backspace") {
@@ -28,10 +28,8 @@ export default function Keyboard() {
           {row.map((key) => (
             <button
               key={key}
-              onClick={() => handleKeyPress(key)}
-              className={`keyboard-key ${keyboardColors[key] || ""}`}
-              data-key={key}
-              type="button">
+              onClick={() => handleKeyClick(key)}
+              className={`keyboard-key ${keyboardColors[key] || ""}`}>
               {key === "Backspace" ? "⌫" : key}
             </button>
           ))}

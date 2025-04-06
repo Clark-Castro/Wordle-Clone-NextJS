@@ -10,35 +10,23 @@ import ThemeToggle from "@/components/ThemeToggle";
 const Keyboard = dynamic(() => import("@/components/Keyboard"), { ssr: false });
 
 export default function Home() {
-  const [isMounted, setIsMounted] = useState(false);
-  const {
-    targetWord,
-    guesses,
-    currentGuess,
-    gameStatus,
-    addLetter,
-    removeLetter,
-    submitGuess,
-    newGame,
-  } = useGameStore();
+  const [isMounted, setIsMounted] = useState<boolean>(false);
+  const Game = useGameStore();
 
   useEffect(() => {
     setIsMounted(true);
+
     const handleKeyDown = (e: KeyboardEvent) => {
       e.preventDefault();
 
-      if (e.key === "Enter") {
-        submitGuess();
-      } else if (e.key === "Backspace") {
-        removeLetter();
-      } else if (/^[a-zA-Z]$/.test(e.key)) {
-        addLetter(e.key.toUpperCase());
-      }
+      if (e.key === "Enter") Game.submitGuess();
+      else if (e.key === "Backspace") Game.removeLetter();
+      else if (/^[a-zA-Z]$/.test(e.key)) Game.addLetter(e.key.toUpperCase());
     };
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
+  }, [Game]);
 
   if (!isMounted) {
     return <div className="loading-screen">Loading...</div>;
@@ -55,26 +43,19 @@ export default function Home() {
         {Array.from({ length: 6 }).map((_, i) => (
           <Row
             key={i}
-            guess={guesses[i] || (i === guesses.length ? currentGuess : "")}
-            targetWord={targetWord}
-            isSubmitted={i < guesses.length}
+            guess={
+              i === Game.guesses.length
+                ? Game.currentGuess
+                : Game.guesses[i] || ""
+            }
+            targetWord={Game.targetWord}
+            isSubmitted={i < Game.guesses.length}
           />
         ))}
       </div>
 
       <Keyboard />
-
-      {gameStatus !== "playing" && (
-        <motion.div
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          className="game-over-modal">
-          <button onClick={newGame} className="new-game-button">
-            New Game
-          </button>
-          <StatsModal />
-        </motion.div>
-      )}
+      {Game.gameStatus !== "playing" && <StatsModal />}
     </motion.main>
   );
 }
