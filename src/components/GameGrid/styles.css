@@ -4,3 +4,9 @@
   border: 2px solid var(--absent);
   color: var(--foreground);
 }
+
+@media (max-width: 768px) {
+  .block {
+    width: 50px;
+  }
+}

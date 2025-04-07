@@ -7,6 +7,10 @@
   border-radius: 8px;
 }
 
+.keyboard-row {
+  max-width: 90vw;
+}
+
 .keyboard-key {
   background-color: var(--key-bg);
   color: white;
@@ -14,6 +18,12 @@
   padding: 12px;
   min-width: 36px;
   cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .keyboard-key {
+    min-width: 24px;
+  }
 }
 
 .keyboard-key:active {

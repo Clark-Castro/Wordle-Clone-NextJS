@@ -86,7 +86,7 @@ const calcNewState = (state: GameState): Partial<GameState> => {
   const newStats = {
     played: stats.played + gameWon + gameLost,
     wins: gameWon ? stats.wins + 1 : stats.wins,
-    streak: gameWon ? stats.streak + 1 : 0,
+    streak: gameWon ? stats.streak + 1 : gameLost ? 0 : stats.streak,
     maxStreak: Math.max(stats.maxStreak, gameWon ? stats.streak + 1 : 0),
   };
 
