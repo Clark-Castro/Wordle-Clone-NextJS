@@ -7,7 +7,10 @@ import ThemeToggle from "@/components/ThemeToggle/ThemeToggle";
 import Row from "@/components/GameGrid/Row";
 import StatsModal from "@/components/StatsModal/StatsModal";
 
-const Keyboard = dynamic(() => import("@/components/Keyboard/Keyboard"), { ssr: false });
+const Keyboard = dynamic(() => import("@/components/Keyboard/Keyboard"), {
+  ssr: false,
+  loading: () => <div className="keyboard-placeholder" />,
+});
 
 export default function Home() {
   const [isMounted, setIsMounted] = useState<boolean>(false);
