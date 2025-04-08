@@ -2,12 +2,11 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { GameState } from "@/types";
 import { calcNewState } from "./utils";
-import { generateWord } from "@/lib/words";
 
 const useGameStore = create<GameState>()(
   persist(
     (set) => ({
-      targetWord: generateWord(),
+      targetWord: "",
       guesses: [],
       currentGuess: "",
       keyboardColors: {},
@@ -20,9 +19,9 @@ const useGameStore = create<GameState>()(
       },
 
       actions: {
-        newGame: () =>
+        newGame: (word: string) =>
           set({
-            targetWord: generateWord(),
+            targetWord: word,
             guesses: [],
             currentGuess: "",
             keyboardColors: {},

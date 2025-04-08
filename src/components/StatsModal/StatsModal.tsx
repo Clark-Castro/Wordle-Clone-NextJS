@@ -1,22 +1,19 @@
 "use client";
 import "./styles.css";
 import { motion } from "framer-motion";
-import {
-  useGameActions,
-  useGameStats,
-  useGuesses,
-  useTargetWord,
-} from "@/store/game";
+import { useGameStats, useGuesses, useTargetWord } from "@/store/game";
 import StatBox from "@/components/StatsModal/StatBox";
 import { useEffect, useState } from "react";
+import { encryptWord, generateWord } from "@/lib/words";
+import { useRouter } from "next/navigation";
 
-export default function StatsModal() {
+export default function StatsModal({ mode }: { mode: string }) {
+  const router = useRouter();
   const targetWord = useTargetWord();
   const [definition, setDefinition] = useState<
     Record<string, string> | undefined
   >();
   const stats = useGameStats();
-  const { newGame } = useGameActions();
   const guesses = useGuesses();
   const [shareButtonText, setShareButtonText] = useState("Share");
 
@@ -35,8 +32,14 @@ export default function StatsModal() {
     fetcher();
   }, [targetWord]);
 
+  const handleNewGameButton = () => {
+    const word = generateWord();
+    const url = "/play/" + encryptWord(word);
+    router.replace(url);
+  };
+
   const handleShareButton = () => {
-    let clip = "";
+    let clip = "The Link To This Word: " + String(window.location) + "\n";
     for (let i = 0; i < guesses.length; i++) {
       for (let j = 0; j < 5; j++)
         if (guesses[i][j] === targetWord[j]) clip = clip + "🟩";
@@ -54,11 +57,15 @@ export default function StatsModal() {
       initial={{ scale: 0 }}
       animate={{ scale: 1 }}
       className="stats-modal flex-col-center gap-large">
-      <h2>
-        The Answer is : {targetWord}
-        {definition?.audio && <audio src={definition.audio} controls={true} />}
-      </h2>
-      <h3 className="word-def">Definition: {definition?.meaning}</h3>
+      {mode && (
+        <h2>
+          The Answer is : {targetWord}
+          {definition?.audio && (
+            <audio src={definition.audio} controls={true} />
+          )}
+        </h2>
+      )}
+      {mode && <h3 className="word-def">Definition: {definition?.meaning}</h3>}
       <div
         className="flex-center flex-wrap gap-large"
         style={{ maxWidth: "35rem" }}>
@@ -70,7 +77,7 @@ export default function StatsModal() {
         <StatBox title="Current Streak" value={stats.streak} />
         <StatBox title="Max Streak" value={stats.maxStreak} />
         <button
-          onClick={newGame}
+          onClick={handleNewGameButton}
           className="newgame-button flex-center font-small">
           New Game
         </button>

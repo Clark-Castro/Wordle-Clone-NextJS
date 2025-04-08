@@ -6,7 +6,7 @@ export type GameStats = {
 };
 
 export type GameActions = {
-  newGame: () => void;
+  newGame: (word: string) => void;
   addLetter: (letter: string) => void;
   removeLetter: () => void;
   submitGuess: () => void;
