@@ -1,11 +1,13 @@
 "use client";
 import "./styles.css";
 import { motion } from "framer-motion";
-import useGameStore from "@/store/game";
+import { useGameActions, useGameStats, useTargetWord } from "@/store/game";
 import StatBox from "@/components/StatsModal/StatBox";
 
 export default function StatsModal() {
-  const { stats, targetWord, newGame } = useGameStore();
+  const targetWord = useTargetWord();
+  const stats = useGameStats();
+  const { newGame } = useGameActions();
 
   return (
     <motion.div

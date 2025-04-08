@@ -5,6 +5,13 @@ export type GameStats = {
   maxStreak: number;
 };
 
+export type GameActions = {
+  newGame: () => void;
+  addLetter: (letter: string) => void;
+  removeLetter: () => void;
+  submitGuess: () => void;
+};
+
 export type GameState = {
   targetWord: string;
   guesses: string[];
@@ -12,11 +19,5 @@ export type GameState = {
   keyboardColors: Record<string, string>;
   gameStatus: "playing" | "won" | "lost";
   stats: GameStats;
-};
-
-export type GameActions = {
-  addLetter: (letter: string) => void;
-  removeLetter: () => void;
-  submitGuess: () => void;
-  newGame: () => void;
+  actions: GameActions;
 };

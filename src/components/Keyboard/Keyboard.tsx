@@ -1,6 +1,6 @@
 "use client";
 import "./styles.css";
-import useGameStore from "@/store/game";
+import { useGameActions, useKeyboardColors } from "@/store/game";
 
 const KEY_ROWS = [
   ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"],
@@ -9,8 +9,8 @@ const KEY_ROWS = [
 ];
 
 export default function Keyboard() {
-  const { addLetter, removeLetter, submitGuess, keyboardColors } =
-    useGameStore();
+  const keyboardColors = useKeyboardColors();
+  const { addLetter, removeLetter, submitGuess } = useGameActions();
 
   const handleKeyClick = (key: string) => {
     if (key === "En") submitGuess();
