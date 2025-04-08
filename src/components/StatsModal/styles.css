@@ -4,6 +4,24 @@
   padding: 4rem 0;
   box-shadow: 0 0 50px var(--foreground);
   z-index: 10000;
+  max-width: 30vw;
+}
+
+@media (max-width: 800px) {
+  .stats-modal {
+    max-width: 90vw;
+  }
+}
+
+audio {
+  width: 100%;
+  height: 50px;
+  margin-top: 0.5rem;
+}
+
+.word-def {
+  max-width: 70%;
+  text-align: center;
 }
 
 .stat-box {
@@ -15,14 +33,17 @@
 
 .stat-title {
   opacity: 0.8;
+  text-align: center;
 }
 
 .newgame-button {
   background-color: var(--correct);
   color: white;
   border: none;
-  padding: 1rem 1.5rem;
+  padding: 1rem;
   cursor: pointer;
+  width: 30%;
+  text-wrap: nowrap;
 }
 
 .newgame-button:hover {
