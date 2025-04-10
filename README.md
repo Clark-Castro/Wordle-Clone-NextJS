@@ -34,22 +34,18 @@ This project brings together smooth animations, real-time word definitions, loca
 
 ## 🛠️ Tech Stack
 
-- **Frontend:** Next.js 14 (App Router), React 18, Styled Components
+- **Frontend:** Next.js 14 (App Router), React 18
 - **State Management:** Zustand
 - **Animation:** Framer Motion
 - **Routing & Rendering:** SSR, ISR, Dynamic Routing with Encrypted Params
 - **Storage:** Local Storage via Zustand middleware
 - **Utilities:** Custom hooks, audio playback, theming, clipboard API
 
-## 🚀 Live Demo
-
-👉 [Play the Game](https://your-vercel-app.vercel.app)
-
 ## 📦 Getting Started
 
 ```bash
 # Clone the repo
-git clone https://github.com/yourusername/wordle-clone.git
+git clone https://github.com/Clark-Castro/Wordle-Clone-NextJS.git
 cd wordle-clone
 
 # Install dependencies
