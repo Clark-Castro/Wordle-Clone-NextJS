@@ -3,6 +3,10 @@
 A modern, open-source reimagining of the classic Wordle game — built for speed, accessibility, and shareability.  
 This project brings together smooth animations, real-time word definitions, local stat tracking, and shareable encrypted URLs — all powered by the **Next.js App Router**.
 
+## 🚀 Live Demo
+
+👉 [Play the Game](https://wordle-clone-nextjs.vercel.app/)
+
 ## ✨ Features
 
 - 🎨 **Dark & Light Theme Toggle**  
@@ -17,7 +21,7 @@ This project brings together smooth animations, real-time word definitions, loca
 - 🎥 **Smooth Animations with Framer Motion**  
   Every tile flip, pop, and transition is powered by Framer Motion for a polished feel.
 
-- 📚 **Word Definitions + Pronunciation**  
+- 📚 **Word Definitions + Pronunciation + A Total of 14500 Words**  
   See the meaning of each word after the game ends, and hear it with built-in audio playback. By default, it uses a free public word and definition API.
 
 - 🔗 **Encrypted, Shareable Game URLs**  

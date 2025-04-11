@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useGameStats, useGuesses, useTargetWord } from "@/store/game";
 import StatBox from "@/components/StatsModal/StatBox";
 import { useEffect, useState } from "react";
-import { encryptWord, generateWord } from "@/lib/words";
+import { encryptWord, generateWord } from "@/lib/WordUtils";
 import { useRouter } from "next/navigation";
 
 export default function StatsModal({ mode }: { mode: string }) {
@@ -19,14 +19,22 @@ export default function StatsModal({ mode }: { mode: string }) {
 
   useEffect(() => {
     const fetcher = async () => {
-      const result = await fetch(
-        `https://api.dictionaryapi.dev/api/v2/entries/en/${targetWord}`
-      );
-      const Def = (await result.json())[0];
-      setDefinition({
-        audio: Def?.phonetics[0]?.audio || Def?.phonetics[1]?.audio || "",
-        meaning: Def?.meanings[0]?.definitions[0]?.definition,
-      });
+      let result;
+      try {
+        result = await fetch(
+          `https://api.dictionaryapi.dev/api/v2/entries/en/${targetWord.toLowerCase()}`
+        );
+        const Def = (await result.json())[0];
+        setDefinition({
+          audio: Def?.phonetics[0]?.audio || Def?.phonetics[1]?.audio || "",
+          meaning: Def?.meanings[0]?.definitions[0]?.definition || "",
+        });
+      } catch {
+        setDefinition({
+          audio: "Error",
+          meaning: "Error",
+        });
+      }
       return;
     };
     fetcher();
@@ -57,15 +65,33 @@ export default function StatsModal({ mode }: { mode: string }) {
       initial={{ scale: 0 }}
       animate={{ scale: 1 }}
       className="stats-modal flex-col-center gap-large">
+      {mode && <h2>The Answer is : {targetWord}</h2>}
       {mode && (
-        <h2>
-          The Answer is : {targetWord}
-          {definition?.audio && (
-            <audio src={definition.audio} controls={true} />
+        <div className="flex-center">
+          {definition === undefined ? (
+            <h3>Loading Audio File...</h3>
+          ) : definition?.audio === "" ? (
+            <h3>No Audio File Is Available.</h3>
+          ) : definition?.audio === "Error" ? (
+            <h3>Failed To Fetch Audio File</h3>
+          ) : (
+            <audio src={definition?.audio} controls={true} />
           )}
-        </h2>
+        </div>
       )}
-      {mode && <h3 className="word-def">Definition: {definition?.meaning}</h3>}
+      {mode && (
+        <div className="flex-center">
+          {definition === undefined ? (
+            <h3>Loading Definition...</h3>
+          ) : definition?.meaning === "" ? (
+            <h3>No Definition Is Available.</h3>
+          ) : definition?.meaning === "Error" ? (
+            <h3>Failed To Fetch Definition</h3>
+          ) : (
+            <h3 className="word-def">Definition: {definition?.meaning}</h3>
+          )}
+        </div>
+      )}
       <div
         className="flex-center flex-wrap gap-large"
         style={{ maxWidth: "35rem" }}>

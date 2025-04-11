@@ -12,7 +12,7 @@ import {
 import ThemeToggle from "@/components/ThemeToggle/ThemeToggle";
 import Row from "@/components/GameGrid/Row";
 import StatsModal from "@/components/StatsModal/StatsModal";
-import { decryptWord } from "@/lib/words";
+import { decryptWord } from "@/lib/WordUtils";
 import { useRouter } from "next/navigation";
 
 const Keyboard = dynamic(() => import("@/components/Keyboard/Keyboard"), {
@@ -47,8 +47,8 @@ export default function PlayPage() {
   useEffect(() => {
     try {
       const decWord = decryptWord();
-      if (decWord.length != 5) router.push("/404");
-      else newGame(decWord);
+      if (decWord.length != 5) router.push("/");
+      else newGame(decWord.toUpperCase());
     } catch {
       router.replace("/");
     }

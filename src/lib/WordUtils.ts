@@ -1,17 +1,4 @@
-export const WORDS = [
-  "REACT",
-  "TYPES",
-  "STATE",
-  "HOOKS",
-  "STORE",
-  "BUILD",
-  "ROUTE",
-  "QUERY",
-  "CACHE",
-  "PROPS",
-  "ERROR",
-  "FETCH",
-];
+import { WORDS } from "./List";
 
 export const generateWord = () =>
   WORDS[Math.floor(Math.random() * WORDS.length)];
