@@ -21,7 +21,7 @@ This project brings together smooth animations, real-time word definitions, loca
 - 🎥 **Smooth Animations with Framer Motion**  
   Every tile flip, pop, and transition is powered by Framer Motion for a polished feel.
 
-- 📚 **Word Definitions + Pronunciation + A Total of 14500 Words**  
+- 📚 **Word Definitions + Pronunciation + The Same Word List As Wordle**  
   See the meaning of each word after the game ends, and hear it with built-in audio playback. By default, it uses a free public word and definition API.
 
 - 🔗 **Encrypted, Shareable Game URLs**  
