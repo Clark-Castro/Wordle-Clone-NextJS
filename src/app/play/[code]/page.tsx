@@ -40,8 +40,8 @@ export default function PlayPage() {
       else if (/^[a-zA-Z]$/.test(e.key)) addLetter(e.key.toUpperCase());
     };
 
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
   }, [addLetter, removeLetter, submitGuess]);
 
   useEffect(() => {
@@ -69,6 +69,7 @@ export default function PlayPage() {
         {Array.from({ length: 6 }).map((_, i) => (
           <Row
             key={i}
+            focusIndex={i}
             guess={i === guesses.length ? currentGuess : guesses[i] || ""}
             targetWord={targetWord}
             isSubmitted={i < guesses.length}
