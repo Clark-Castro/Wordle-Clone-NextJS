@@ -1,8 +1,8 @@
 "use client";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import ThemeToggle from "@/components/ThemeToggle/ThemeToggle";
 import StatsModal from "@/components/StatsModal/StatsModal";
-import { useState, useEffect } from "react";
 
 export default function Home() {
   const [isMounted, setIsMounted] = useState<boolean>(false);

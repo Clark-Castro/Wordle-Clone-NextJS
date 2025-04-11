@@ -1,6 +1,6 @@
 "use client";
-import Block from "@/components/GameGrid/Block";
 import { useCurrentGuess, useGuesses } from "@/store/game";
+import Block from "@/components/GameGrid/Block";
 
 type RowProps = {
   focusIndex: number;

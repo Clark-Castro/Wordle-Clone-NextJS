@@ -1,12 +1,12 @@
 "use client";
 import "./styles.css";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { useGameStats, useGuesses, useTargetWord } from "@/store/game";
-import StatBox from "@/components/StatsModal/StatBox";
-import { useEffect, useState } from "react";
 import { encryptWord, generateWord } from "@/lib/WordUtils";
-import { useRouter } from "next/navigation";
-import ToolTip from "../ToolTip/ToolTip";
+import StatBox from "@/components/StatsModal/StatBox";
+import ToolTip from "@/components/ToolTip/ToolTip";
 
 export default function StatsModal({ mode }: { mode: string }) {
   const router = useRouter();

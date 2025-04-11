@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import {
   useCurrentGuess,
@@ -9,11 +10,10 @@ import {
   useGuesses,
   useTargetWord,
 } from "@/store/game";
-import ThemeToggle from "@/components/ThemeToggle/ThemeToggle";
-import Row from "@/components/GameGrid/Row";
-import StatsModal from "@/components/StatsModal/StatsModal";
 import { decryptWord } from "@/lib/WordUtils";
-import { useRouter } from "next/navigation";
+import ThemeToggle from "@/components/ThemeToggle/ThemeToggle";
+import StatsModal from "@/components/StatsModal/StatsModal";
+import Row from "@/components/GameGrid/Row";
 
 const Keyboard = dynamic(() => import("@/components/Keyboard/Keyboard"), {
   ssr: false,
