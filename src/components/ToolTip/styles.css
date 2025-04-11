@@ -1,0 +1,18 @@
+.tooltip {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+  left: 10rem;
+  width: min-content;
+  padding: 1rem;
+  background-color: var(--absent);
+  box-shadow: 0 0 50px var(--foreground);
+  white-space: pre-wrap;
+  text-align: start;
+}
+
+@media (min-width: 850px) {
+  .newgame-button:hover .tooltip {
+    opacity: 1;
+  }
+}

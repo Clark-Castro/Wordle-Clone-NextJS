@@ -6,6 +6,7 @@ import StatBox from "@/components/StatsModal/StatBox";
 import { useEffect, useState } from "react";
 import { encryptWord, generateWord } from "@/lib/WordUtils";
 import { useRouter } from "next/navigation";
+import ToolTip from "../ToolTip/ToolTip";
 
 export default function StatsModal({ mode }: { mode: string }) {
   const router = useRouter();
@@ -16,6 +17,7 @@ export default function StatsModal({ mode }: { mode: string }) {
   const stats = useGameStats();
   const guesses = useGuesses();
   const [shareButtonText, setShareButtonText] = useState("Share");
+  const [clipboardText, setClipboardText] = useState("");
 
   useEffect(() => {
     const fetcher = async () => {
@@ -46,8 +48,9 @@ export default function StatsModal({ mode }: { mode: string }) {
     router.replace(url);
   };
 
-  const handleShareButton = () => {
-    let clip = "The Link To This Word: " + String(window.location) + "\n";
+  const handleShareButton = (click: boolean) => {
+    let clip =
+      "The Link To This Word: " + String(window.location) + "\n\nMy Attempt:\n";
     for (let i = 0; i < guesses.length; i++) {
       for (let j = 0; j < 5; j++)
         if (guesses[i][j] === targetWord[j]) clip = clip + "🟩";
@@ -56,8 +59,11 @@ export default function StatsModal({ mode }: { mode: string }) {
 
       clip = clip + "\n";
     }
-    navigator.clipboard.writeText(clip);
-    setShareButtonText("Copied!");
+    setClipboardText(clip);
+    if (click) {
+      navigator.clipboard.writeText(clip);
+      setShareButtonText("Copied!");
+    }
   };
 
   return (
@@ -109,8 +115,10 @@ export default function StatsModal({ mode }: { mode: string }) {
         </button>
         <button
           className="newgame-button flex-center font-small"
-          onClick={() => handleShareButton()}>
+          onClick={() => handleShareButton(true)}
+          onMouseEnter={() => handleShareButton(false)}>
           {shareButtonText}
+          <ToolTip text={clipboardText} />
         </button>
       </div>
     </motion.div>
