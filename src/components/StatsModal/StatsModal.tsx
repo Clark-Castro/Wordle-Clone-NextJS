@@ -113,13 +113,15 @@ export default function StatsModal({ mode }: { mode: string }) {
           className="newgame-button flex-center font-small">
           New Game
         </button>
-        <button
-          className="newgame-button flex-center font-small"
-          onClick={() => handleShareButton(true)}
-          onMouseEnter={() => handleShareButton(false)}>
-          {shareButtonText}
-          <ToolTip text={clipboardText} />
-        </button>
+        {mode && (
+          <button
+            className="newgame-button flex-center font-small"
+            onClick={() => handleShareButton(true)}
+            onMouseEnter={() => handleShareButton(false)}>
+            {shareButtonText}
+            <ToolTip text={clipboardText} />
+          </button>
+        )}
       </div>
     </motion.div>
   );
