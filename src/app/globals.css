@@ -20,6 +20,10 @@
   border-radius: 8px;
 }
 
+html {
+  background-color: var(--background);
+}
+
 body {
   font-family: system-ui, -apple-system, sans-serif;
   background-color: var(--background);

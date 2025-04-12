@@ -20,26 +20,28 @@ export default function StatsModal({ mode }: { mode: string }) {
   const [clipboardText, setClipboardText] = useState("");
 
   useEffect(() => {
-    const fetcher = async () => {
-      let result;
-      try {
-        result = await fetch(
-          `https://api.dictionaryapi.dev/api/v2/entries/en/${targetWord.toLowerCase()}`
-        );
-        const Def = (await result.json())[0];
-        setDefinition({
-          audio: Def?.phonetics[0]?.audio || Def?.phonetics[1]?.audio || "",
-          meaning: Def?.meanings[0]?.definitions[0]?.definition || "",
-        });
-      } catch {
-        setDefinition({
-          audio: "Error",
-          meaning: "Error",
-        });
-      }
-      return;
-    };
-    fetcher();
+    if (targetWord) {
+      const fetcher = async () => {
+        let result;
+        try {
+          result = await fetch(
+            `https://api.dictionaryapi.dev/api/v2/entries/en/${targetWord.toLowerCase()}`
+          );
+          const Def = (await result.json())[0];
+          setDefinition({
+            audio: Def?.phonetics[0]?.audio || Def?.phonetics[1]?.audio || "",
+            meaning: Def?.meanings[0]?.definitions[0]?.definition || "",
+          });
+        } catch {
+          setDefinition({
+            audio: "Error",
+            meaning: "Error",
+          });
+        }
+        return;
+      };
+      fetcher();
+    }
   }, [targetWord]);
 
   const handleNewGameButton = () => {
