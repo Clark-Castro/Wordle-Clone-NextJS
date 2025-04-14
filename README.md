@@ -49,19 +49,19 @@ This project brings together smooth animations, real-time word definitions, loca
 
 ### 🏠 Main Page
 
-![Main Page](./public/Demo1.webm)
+![Main Page](./public/Demo1.gif)
 
 ### 🖥️ Desktop Gameplay
 
-![Desktop Gameplay](./public/Demo2.webm)
+![Desktop Gameplay](./public/Demo2.gif)
 
 ### 📱 Mobile Gameplay
 
-![Mobile Gameplay](./public/Demo4.webm)
+![Mobile Gameplay](./public/Demo4.gif)
 
 ### 📊 Stats and Share Panel
 
-![Stats Panel](./public/Demo3.webm)
+![Stats Panel](./public/Demo3.gif)
 
 ## 📈 Lighthouse Performance
 
