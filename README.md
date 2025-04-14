@@ -45,6 +45,32 @@ This project brings together smooth animations, real-time word definitions, loca
 - **Storage:** Local Storage via Zustand middleware
 - **Utilities:** Custom hooks, audio playback, theming, clipboard API
 
+## 🌟 Preview
+
+### 🏠 Main Page
+
+![Main Page](/Demo1.webm)
+
+### 🖥️ Desktop Gameplay
+
+![Desktop Gameplay](/Demo2.webm)
+
+### 📱 Mobile Gameplay
+
+![Mobile Gameplay](/Demo4.webm)
+
+### 📊 Stats and Share Panel
+
+![Stats Panel](/Demo3.webm)
+
+## 📈 Lighthouse Performance
+
+**Desktop**
+![Lighthouse Desktop](/LighthousePC.png)
+
+**Mobile**
+![Lighthouse Mobile](/LighthousePH.png)
+
 ## 📦 Getting Started
 
 ```bash
